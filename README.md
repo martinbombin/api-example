@@ -1,6 +1,6 @@
 # Api Example
 
-This is a technical test project built using **FastAPI**, **MySQL**, **Docker**, and **Kubernetes**. It provides a simple user management API with tests.
+This is a project built using **FastAPI**, **MySQL**, **Docker**, and **Kubernetes**. It provides a simple user management API with tests.
 
 ---
 
@@ -22,7 +22,7 @@ This is a technical test project built using **FastAPI**, **MySQL**, **Docker**,
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/api-example.git
+git clone https://github.com/martinbombin/api-example.git
 cd api-example
 ```
 
