@@ -1,0 +1,34 @@
+services:
+  mysql_integration_tests:
+    image: mysql:8.0
+    container_name: mysql_integration_tests
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT}:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pytest:
+    build:
+      context: .
+      dockerfile: Dockerfile_test
+    container_name: pytest_runner
+    entrypoint: ["bash", "-c", "sleep 10 && pytest -v"]
+    depends_on:
+      mysql_integration_tests:
+        condition: service_healthy
+    environment:
+      DB_HOST: mysql_integration_tests
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_TYPE: ${DB_TYPE}
+      DB_PORT: ${DB_PORT}
