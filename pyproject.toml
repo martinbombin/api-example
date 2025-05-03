@@ -1,0 +1,65 @@
+[project]
+name = "api-example"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "martinbombin",email = "martn.b.o@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi[standard] (>=0.115.12,<0.116.0)",
+    "pytest (>=8.3.5,<9.0.0)",
+    "pydantic-settings (>=2.8.1,<3.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "sqlalchemy (>=2.0.40,<3.0.0)",
+    "passlib[bcrypt] (>=1.7.4,<2.0.0)",
+    "mysqlclient (>=2.2.7,<3.0.0)",
+    "bcrypt (==4.0.1)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+line-length = 72
+
+[tool.ruff.lint]
+select = ["ALL"]
+
+[tool.pytest.ini_options]
+markers = [
+    "unit: mark a test as a unit test",
+    "integration: mark a test as an integration test"
+]
